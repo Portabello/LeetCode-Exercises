@@ -2,7 +2,7 @@
 
 # Note:
 
-# he solution set must not contain duplicate triplets.
+# The solution set must not contain duplicate triplets.
 
 # Example:
 
@@ -19,6 +19,7 @@
 # :rtype: List[List[int]]
 
 class Solution:
+    ## checks over possible answers more than once, can be tightened a lot
     def threeSum(self, nums):
         ans = []
         for i in range(0,len(nums)):
@@ -27,7 +28,7 @@ class Solution:
                     if nums[i]+nums[j]+nums[k] == 0 and self.checkDuplicate(ans, [nums[i], nums[j], nums[k]]) == False:
                         ans.append([nums[i], nums[j], nums[k]])
         return ans
-    # definitely can improve checking algorithm here,
+    # definitely can improve checking algorithm here
     def checkDuplicate(self, ans, num):
         if len(ans)==0:
             return False
