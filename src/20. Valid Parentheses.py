@@ -33,4 +33,5 @@ class Solution:
         :type s: str
         :rtype: bool
         """
-        
+        for x in range(0,len(s)):
+            break
