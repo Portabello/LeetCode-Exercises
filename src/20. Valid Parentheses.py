@@ -33,5 +33,42 @@ class Solution:
         :type s: str
         :rtype: bool
         """
+        stack = []
         for x in range(0,len(s)):
-            break
+            if s[x] == ')':
+                if stack[len(stack)-1] == '(':
+                    stack.pop()
+                else:
+                    return False
+            elif s[x] == ']':
+                if stack[len(stack)-1] == '[':
+                    stack.pop()
+                else:
+                    return False
+            elif s[x] == '}':
+                if stack[len(stack)-1] == '{':
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(s[x])
+        if len(stack)==0:
+            return True
+        return False
+
+obj = Solution()
+s = '()'
+print(s)
+print(obj.isValid(s))
+s = '()[]{}'
+print(s)
+print(obj.isValid(s))
+s = '(]'
+print(s)
+print(obj.isValid(s))
+s = '([)]'
+print(s)
+print(obj.isValid(s))
+s = '{[]}'
+print(s)
+print(obj.isValid(s))
