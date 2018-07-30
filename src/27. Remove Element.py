@@ -46,11 +46,9 @@ class Solution:
         index = len(nums)-1
         for x in range(len(nums)-1, -1, -1):
             if nums[x] == val:
-                print('swap:  x: '+str(x)+' index: '+str(index))
-                temp = nums[index]
-                nums[x] = nums[index]
-                nums[index] = temp
+                nums[x], nums[index] = nums[index], nums[x]
                 index = index-1
+                print('swap:  x: ' + str(x) + ' index: ' + str(index) + ' nums: ' + str(nums))
         print (nums)
 
 
