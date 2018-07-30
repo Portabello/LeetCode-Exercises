@@ -43,3 +43,15 @@ class Solution:
         :type val: int
         :rtype: int
         """
+        index = len(nums)
+        for x in range(0, len(nums)):
+            if x == index:
+                break
+            if nums[x] == val:
+                nums[x], nums[index] = nums[index], nums[x]
+        print (nums)
+
+
+obj = Solution()
+nums = [3,2,2,3]
+obj.removeElement(nums, 3)
