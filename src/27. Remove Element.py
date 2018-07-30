@@ -43,12 +43,14 @@ class Solution:
         :type val: int
         :rtype: int
         """
-        index = len(nums)
-        for x in range(0, len(nums)):
-            if x == index:
-                break
+        index = len(nums)-1
+        for x in range(len(nums)-1, -1, -1):
             if nums[x] == val:
-                nums[x], nums[index] = nums[index], nums[x]
+                print('swap:  x: '+str(x)+' index: '+str(index))
+                temp = nums[index]
+                nums[x] = nums[index]
+                nums[index] = temp
+                index = index-1
         print (nums)
 
 
