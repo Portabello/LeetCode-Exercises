@@ -50,4 +50,3 @@ class Solution:
         :type board: List[List[str]]
         :rtype: bool
         """
-ff
