@@ -1,53 +1,35 @@
-# Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
-
-# Note:
-
-# The solution set must not contain duplicate triplets.
-
-# Example:
-
-# Given array nums = [-1, 0, 1, 2, -1, -4],
-
-# A solution set is:
-# [
-#   [-1, 0, 1],
-#   [-1, -1, 2]
-# ]
-
-
-# :type nums: List[int]
-# :rtype: List[List[int]]
-
 class Solution:
-    ## checks over possible answers more than once, can be tightened a lot
     def threeSum(self, nums):
         ans = []
-        for i in range(0,len(nums)):
-            for j in range(i+1, len(nums)):
-                for k in range(j+1, len(nums)):
-                    if nums[i]+nums[j]+nums[k] == 0 and self.checkDuplicate(ans, [nums[i], nums[j], nums[k]]) == False:
-                        ans.append([nums[i], nums[j], nums[k]])
+        for x in range(0, len(nums)):
+            for y in range(x+1, len(nums)):
+                for z in range(y+1, len(nums)):
+                    #print('(', x, ',',y, ',',z, ')')
+                    if nums[x]+nums[y]+nums[z]==0 and self.checkDuplicate(ans, [nums[x], nums[y], nums[z]]):
+                        ans.append([nums[x], nums[y], nums[z]])
+                        #print('[',nums[x], ',', nums[y], ',', nums[z],']')
         return ans
-    # definitely can improve checking algorithm here
+
+
     def checkDuplicate(self, ans, num):
-        if len(ans)==0:
-            return False
-        for x in range(0,len(ans)):
-            temp = 0
-            for y in range(0,3):
-                if num[y]==ans[x][0]:
-                    temp+=1
-                elif num[y]==ans[x][1]:
-                    temp+=1
-                elif num[y]==ans[x][2]:
-                    temp+=1
-            if temp == 3:
-                return True
-            temp = 0
-        return False
+        print(num)
+        if len(ans) == 0:
+            return True
+        for x in ans:
+            copy_num = num[:]
+            for i in x:
+                for j in copy_num:
+                    if j == i:
+                        #print('removing:',j)
+                        copy_num.remove(j)
+                if len(copy_num) == 0:
+                    return False
+        return True
+
+
 
 
 
 obj = Solution()
-nums = [-1,0,1,2,-1,-4]
+nums = [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]
 print('FINAL ANSWER: '+str(obj.threeSum(nums)))
