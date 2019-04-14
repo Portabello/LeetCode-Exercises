@@ -12,18 +12,13 @@ class Solution:
 
 
     def checkDuplicate(self, ans, num):
-        print(num)
         if len(ans) == 0:
             return True
+        num.sort()
         for x in ans:
-            copy_num = num[:]
-            for i in x:
-                for j in copy_num:
-                    if j == i:
-                        #print('removing:',j)
-                        copy_num.remove(j)
-                if len(copy_num) == 0:
-                    return False
+            x.sort()
+            if x == num:
+                return False
         return True
 
 
